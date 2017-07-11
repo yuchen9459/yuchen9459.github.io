@@ -1,0 +1,748 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Leetcode,Algorithm,Java,BFS,Stack," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Decode StringQuestionGiven an encoded string, return it’s decoded string. The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times">
+<meta name="keywords" content="Leetcode,Algorithm,Java,BFS,Stack">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" Decode String || Surrounded Regions">
+<meta property="og:url" content="http://yoursite.com/2016/10/06/2016-10-06--Decode-String || -Surrounded-Regions/index.html">
+<meta property="og:site_name" content="Coding Rabbit">
+<meta property="og:description" content="Decode StringQuestionGiven an encoded string, return it’s decoded string. The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times">
+<meta property="og:updated_time" content="2017-07-07T21:46:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" Decode String || Surrounded Regions">
+<meta name="twitter:description" content="Decode StringQuestionGiven an encoded string, return it’s decoded string. The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/06/2016-10-06--Decode-String || -Surrounded-Regions/"/>
+
+
+
+
+
+  <title> Decode String || Surrounded Regions | Coding Rabbit</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coding Rabbit</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/10/06/2016-10-06--Decode-String || -Surrounded-Regions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coding Rabbit">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Rabbit">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"> Decode String || Surrounded Regions</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-10-06T00:00:00+08:00">
+                2016-10-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Decode-String"><a href="#Decode-String" class="headerlink" title="Decode String"></a>Decode String</h3><h5 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h5><p>Given an encoded string, return it’s decoded string.</p>
+<p>The encoding rule is: <strong>k[encoded_string]</strong>, where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.</p>
+<p>You may assume that the input string is always valid; No extra white spaces, square brackets are well-formed, etc.</p>
+<p>Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, k. For example, there won’t be input like <strong>3a</strong> or <strong>2[4]</strong>.</p>
+<p><strong>Examples:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">s = &quot;3[a]2[bc]&quot;, return &quot;aaabcbc&quot;.</div><div class="line">s = &quot;3[a2[c]]&quot;, return &quot;accaccacc&quot;.</div><div class="line">s = &quot;2[abc]3[cd]ef&quot;, return &quot;abcabccdcdcdef&quot;.</div></pre></td></tr></table></figure>
+<h5 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h5><ul>
+<li>遇到数字压入栈count中，注意数字可能<strong>不止一位</strong></li>
+<li>遇到字母衔接到结果字符串res后</li>
+<li>遇到[，将当前的结果字符串res压入栈中保存，并且将res置空，方便后续重复字符串的赋值</li>
+<li>遇到]，弹出count与str栈顶元素，在str栈顶元素后衔接count个当前的res，最后将所得字符串赋值给res</li>
+<li>直接在结果字符串处理，可以方便只有一个的字符串直接衔接在res后</li>
+</ul>
+<h5 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">decodeString</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        String res=<span class="string">""</span>;</div><div class="line">        <span class="keyword">int</span> i=<span class="number">0</span>;</div><div class="line">        Stack&lt;Integer&gt; cnt=<span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        Stack&lt;String&gt; str=<span class="keyword">new</span> Stack&lt;&gt;();</div><div class="line">        <span class="keyword">char</span>[] strarr=s.toCharArray();</div><div class="line">        <span class="keyword">while</span>(i&lt;s.length())&#123;</div><div class="line">            <span class="keyword">if</span>(Character.isDigit(strarr[i]))&#123;</div><div class="line">                <span class="keyword">int</span> num=<span class="number">0</span>;</div><div class="line">                <span class="keyword">while</span>(Character.isDigit(strarr[i]))&#123;</div><div class="line">                    num=num*<span class="number">10</span>+(strarr[i]-<span class="string">'0'</span>);</div><div class="line">                    i++;</div><div class="line">                &#125;</div><div class="line">                cnt.push(num);</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(strarr[i]==<span class="string">'['</span>)&#123;</div><div class="line">                str.push(res);</div><div class="line">                res=<span class="string">""</span>;</div><div class="line">                i++;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(strarr[i]==<span class="string">']'</span>)&#123;</div><div class="line">                <span class="keyword">int</span> count=cnt.pop();</div><div class="line">                StringBuilder strpop=<span class="keyword">new</span> StringBuilder(str.pop());</div><div class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;count;j++)&#123;</div><div class="line">                    strpop.append(res);</div><div class="line">                &#125;</div><div class="line">                res=strpop.toString();</div><div class="line">                i++;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                res+=strarr[i];</div><div class="line">                i++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Surrounded-Regions"><a href="#Surrounded-Regions" class="headerlink" title="Surrounded Regions"></a>Surrounded Regions</h3><h5 id="Question-1"><a href="#Question-1" class="headerlink" title="Question"></a>Question</h5><p>Given a 2D board containing <code>&#39;X&#39;</code> and <code>&#39;O&#39;</code> (the <strong>letter</strong> O), capture all regions surrounded by <code>&#39;X&#39;</code>.</p>
+<p>A region is captured by flipping all <code>&#39;O&#39;</code>s into <code>&#39;X&#39;</code>s in that surrounded region.</p>
+<p>For example,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">X X X X</div><div class="line">X O O X</div><div class="line">X X O X</div><div class="line">X O X X</div></pre></td></tr></table></figure>
+<p>After running your function, the board should be:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">X X X X</div><div class="line">X X X X</div><div class="line">X X X X</div><div class="line">X O X X</div></pre></td></tr></table></figure>
+<h5 id="Analysis-1"><a href="#Analysis-1" class="headerlink" title="Analysis"></a>Analysis</h5><p>找到位于最外四条边的O，由其出发进行BFS，将该过程中所有遇到的O均改变为#，最后遍历整个方阵。将其中的#改为O，其余的都变为X</p>
+<ul>
+<li>用visited实现的方法很蠢，没有意义- -</li>
+<li>BFS中需要控制边界的条件，首先判断i/j的加一或减一操作后是否会有越界，再分四种状况进行BFS</li>
+</ul>
+<h5 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> row=board.length;</div><div class="line">        <span class="keyword">if</span>(row&lt;<span class="number">2</span>)</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">int</span> col=board[<span class="number">0</span>].length;</div><div class="line">        <span class="keyword">if</span>(col&lt;<span class="number">2</span>)</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        <span class="keyword">boolean</span>[][] visited=<span class="keyword">new</span> <span class="keyword">boolean</span>[row][col];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;row;i++)</div><div class="line">            Arrays.fill(visited[i],<span class="keyword">false</span>);</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;row;i++)&#123;</div><div class="line">            <span class="keyword">if</span>(board[i][<span class="number">0</span>]==<span class="string">'O'</span>)&#123;</div><div class="line">                visited[i][<span class="number">0</span>]=<span class="keyword">true</span>;</div><div class="line">                BFS(board,visited,i,<span class="number">0</span>,row,col);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(board[i][col-<span class="number">1</span>]==<span class="string">'O'</span>)&#123;</div><div class="line">                visited[i][col-<span class="number">1</span>]=<span class="keyword">true</span>;</div><div class="line">                BFS(board,visited,i,col-<span class="number">1</span>,row,col);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;col;j++)&#123;</div><div class="line">            <span class="keyword">if</span>(board[<span class="number">0</span>][j]==<span class="string">'O'</span>)&#123;</div><div class="line">                visited[<span class="number">0</span>][j]=<span class="keyword">true</span>;</div><div class="line">                BFS(board,visited,<span class="number">0</span>,j,row,col);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span>(board[row-<span class="number">1</span>][j]==<span class="string">'O'</span>)&#123;</div><div class="line">                visited[row-<span class="number">1</span>][j]=<span class="keyword">true</span>;</div><div class="line">                BFS(board,visited,row-<span class="number">1</span>,j,row,col);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;row;i++)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;col;j++)&#123;</div><div class="line">                <span class="keyword">if</span>(!visited[i][j])</div><div class="line">                    board[i][j]=<span class="string">'X'</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">char</span>[][] board, <span class="keyword">boolean</span>[][] visited, <span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> row, <span class="keyword">int</span> col)</span></span>&#123;</div><div class="line">        <span class="keyword">if</span>(i&gt;<span class="number">1</span>&amp;&amp;board[i-<span class="number">1</span>][j]==<span class="string">'O'</span>&amp;&amp;!visited[i-<span class="number">1</span>][j])&#123;</div><div class="line">            visited[i-<span class="number">1</span>][j]=<span class="keyword">true</span>;</div><div class="line">            BFS(board,visited,i-<span class="number">1</span>,j,row,col);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(i&lt;row-<span class="number">1</span>&amp;&amp;board[i+<span class="number">1</span>][j]==<span class="string">'O'</span>&amp;&amp;!visited[i+<span class="number">1</span>][j])&#123;</div><div class="line">            visited[i+<span class="number">1</span>][j]=<span class="keyword">true</span>;</div><div class="line">            BFS(board,visited,i+<span class="number">1</span>,j,row,col);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(j&gt;<span class="number">1</span>&amp;&amp;board[i][j-<span class="number">1</span>]==<span class="string">'O'</span>&amp;&amp;!visited[i][j-<span class="number">1</span>])&#123;</div><div class="line">            visited[i][j-<span class="number">1</span>]=<span class="keyword">true</span>;</div><div class="line">            BFS(board,visited,i,j-<span class="number">1</span>,row,col);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(j&lt;col-<span class="number">1</span>&amp;&amp;board[i][j+<span class="number">1</span>]==<span class="string">'O'</span>&amp;&amp;!visited[i][j+<span class="number">1</span>])&#123;</div><div class="line">            visited[i][j+<span class="number">1</span>]=<span class="keyword">true</span>;</div><div class="line">            BFS(board,visited,i,j+<span class="number">1</span>,row,col);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/BFS/" rel="tag"># BFS</a>
+          
+            <a href="/tags/Stack/" rel="tag"># Stack</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/05/2016-10-05--Same-Tree || -Symmetric-Tree/" rel="next" title=" Same Tree || Symmetric Tree">
+                <i class="fa fa-chevron-left"></i>  Same Tree || Symmetric Tree
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/08/2016-10-08--Count-and-Say || -Balanced-Binary-Tree/" rel="prev" title=" Count and Say || Balanced Binary Tree">
+                 Count and Say || Balanced Binary Tree <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Coding Rabbit" />
+          <p class="site-author-name" itemprop="name">Coding Rabbit</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yuchen9459" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://facebook.com/100010761666489" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3223348645" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Decode-String"><span class="nav-number">1.</span> <span class="nav-text">Decode String</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Question"><span class="nav-number">1.0.1.</span> <span class="nav-text">Question</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Analysis"><span class="nav-number">1.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Code"><span class="nav-number">1.0.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Surrounded-Regions"><span class="nav-number">2.</span> <span class="nav-text">Surrounded Regions</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Question-1"><span class="nav-number">2.0.1.</span> <span class="nav-text">Question</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Analysis-1"><span class="nav-number">2.0.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Code-1"><span class="nav-number">2.0.3.</span> <span class="nav-text">Code</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coding Rabbit</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

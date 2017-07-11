@@ -1,0 +1,778 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Leetcode,Algorithm,Java," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Intersection of Two ArraysQuestionGiven two arrays, write a function to compute their intersection. Example:Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2]. Analysis两个HashSet分别用于找Intersection和存">
+<meta name="keywords" content="Leetcode,Algorithm,Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content=" Sort 合集 ">
+<meta property="og:url" content="http://yoursite.com/2017/02/23/2017-02-23--Sort-合集 /index.html">
+<meta property="og:site_name" content="Coding Rabbit">
+<meta property="og:description" content="Intersection of Two ArraysQuestionGiven two arrays, write a function to compute their intersection. Example:Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2]. Analysis两个HashSet分别用于找Intersection和存">
+<meta property="og:updated_time" content="2017-07-07T21:46:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content=" Sort 合集 ">
+<meta name="twitter:description" content="Intersection of Two ArraysQuestionGiven two arrays, write a function to compute their intersection. Example:Given nums1 = [1, 2, 2, 1], nums2 = [2, 2], return [2]. Analysis两个HashSet分别用于找Intersection和存">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/02/23/2017-02-23--Sort-合集 /"/>
+
+
+
+
+
+  <title> Sort 合集  | Coding Rabbit</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coding Rabbit</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/23/2017-02-23--Sort-合集 /">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coding Rabbit">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Rabbit">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline"> Sort 合集 </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-23T00:00:00+08:00">
+                2017-02-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Intersection-of-Two-Arrays"><a href="#Intersection-of-Two-Arrays" class="headerlink" title="Intersection of Two Arrays"></a>Intersection of Two Arrays</h3><h4 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h4><p>Given two arrays, write a function to compute their intersection.</p>
+<p><strong>Example:</strong><br>Given <em>nums1</em> = <code>[1, 2, 2, 1]</code>, <em>nums2</em> = <code>[2, 2]</code>, return <code>[2]</code>.</p>
+<h4 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h4><p>两个HashSet分别用于找Intersection和存储不重复结果</p>
+<p><strong>时间复杂度</strong> ：O(n)</p>
+<h4 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] intersection(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</div><div class="line">        Set&lt;Integer&gt; res=<span class="keyword">new</span> HashSet&lt;Integer&gt;();</div><div class="line">        Set&lt;Integer&gt; set=<span class="keyword">new</span> HashSet&lt;Integer&gt;();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i:nums1)&#123;</div><div class="line">            set.add(i);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j:nums2)&#123;</div><div class="line">            <span class="keyword">if</span>(set.contains(j))</div><div class="line">                res.add(j);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span>[] result=<span class="keyword">new</span> <span class="keyword">int</span>[res.size()];</div><div class="line">        <span class="keyword">int</span> m=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> tmp:res)&#123;</div><div class="line">            result[m++]=tmp;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Intersection-of-Two-Arrays-II"><a href="#Intersection-of-Two-Arrays-II" class="headerlink" title="Intersection of Two Arrays II"></a>Intersection of Two Arrays II</h3><h4 id="Question-1"><a href="#Question-1" class="headerlink" title="Question"></a>Question</h4><p>Given two arrays, write a function to compute their intersection.</p>
+<p><strong>Example:</strong><br>Given <em>nums1</em> = <code>[1, 2, 2, 1]</code>, <em>nums2</em> = <code>[2, 2]</code>, return <code>[2, 2]</code>.</p>
+<p><strong>Note:</strong></p>
+<ul>
+<li>Each element in the result should appear as many times as it shows in both arrays.</li>
+<li>The result can be in any order.</li>
+</ul>
+<p><strong>Follow up:</strong></p>
+<ul>
+<li>What if the given array is already sorted? How would you optimize your algorithm?</li>
+<li>What if <em>nums1</em>‘s size is small compared to <em>nums2</em>‘s size? Which algorithm is better?</li>
+<li>What if elements of <em>nums2</em> are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?</li>
+</ul>
+<h4 id="Analysis-1"><a href="#Analysis-1" class="headerlink" title="Analysis"></a>Analysis</h4><ul>
+<li>将两个数组排序之后利用两个指针跟踪两个数组的元素进行比较，相等时加入结果，否则较小的数字方的指针向下移动。</li>
+<li>或者不排序，利用HashMap来记录每个元素的出现次数，每遇到重复便将次数-1</li>
+</ul>
+<p><strong>Answer To Third Follow Up Question</strong></p>
+<ol>
+<li>假如只有nums2不能放入内存中，则将nums1放入HashMap中，每次从disk中读取恰巧可以放入内存中大小的数据，记录intersection</li>
+<li>假如nums1 与 nums2 均不能放入内存中，则对其分别利用外排(external sort)进行排序,则每次读取比如2G的数据（内存中可以放的下的大小），利用Two Pointers找到intersection，循环执行这个步骤直至没有数据可比较。</li>
+</ol>
+<h4 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] intersect(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</div><div class="line">        Arrays.sort(nums1);</div><div class="line">        Arrays.sort(nums2);</div><div class="line">        List&lt;Integer&gt; res=<span class="keyword">new</span> ArrayList&lt;Integer&gt;();</div><div class="line">        <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;</div><div class="line">        <span class="keyword">while</span>(i&lt;nums1.length&amp;&amp;j&lt;nums2.length)&#123;</div><div class="line">            <span class="keyword">if</span>(nums1[i]==nums2[j])&#123;</div><div class="line">                res.add(nums1[i]);</div><div class="line">                i++;</div><div class="line">                j++;</div><div class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(nums1[i]&lt;nums2[j])&#123;</div><div class="line">                i++;</div><div class="line">            &#125;<span class="keyword">else</span>&#123;</div><div class="line">                j++;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">int</span> m=<span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span>[] result=<span class="keyword">new</span> <span class="keyword">int</span>[res.size()];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> tmp:res)&#123;</div><div class="line">            result[m++]=tmp;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>Shorter Version</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span>[] intersection(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2) &#123;</div><div class="line">    <span class="keyword">int</span> k = <span class="number">0</span>, l1 = nums1.length, l2 = nums2.length;</div><div class="line">    <span class="keyword">int</span>[] result = <span class="keyword">new</span> <span class="keyword">int</span>[l1];</div><div class="line">    Arrays.sort(nums1);</div><div class="line">    Arrays.sort(nums2);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>; i &lt; l1 &amp;&amp; j &lt; l2;)</div><div class="line">        <span class="keyword">if</span> (nums1[i] &lt; nums2[j]) i++;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (nums1[i] == nums2[j++]) result[k++] = nums1[i++];</div><div class="line">    <span class="keyword">return</span> Arrays.copyOf(result, k);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="H-Index"><a href="#H-Index" class="headerlink" title="H-Index"></a>H-Index</h3><blockquote>
+<p><a href="https://yuchen9459.github.io/2016/10/12/H-Index-series/" target="_blank" rel="external">H Index I/ II</a></p>
+</blockquote>
+<p>桶排序思想</p>
+<h3 id="Valid-Anagram"><a href="#Valid-Anagram" class="headerlink" title="Valid Anagram"></a>Valid Anagram</h3><h4 id="Question-2"><a href="#Question-2" class="headerlink" title="Question"></a>Question</h4><p>Given two strings <em>s</em> and <em>t</em>, write a function to determine if <em>t</em> is an anagram of <em>s</em>.</p>
+<p>For example,<br><em>s</em> = “anagram”, <em>t</em> = “nagaram”, return true.<br><em>s</em> = “rat”, <em>t</em> = “car”, return false.</p>
+<h4 id="Analysis-2"><a href="#Analysis-2" class="headerlink" title="Analysis"></a>Analysis</h4><p>利用int数组记录每个字母出现的次数，第一个串遍历的过程中++，第二个串遍历的过程中- - ，最后判断是否数组中所有的元素均为0.</p>
+<h4 id="Code-2"><a href="#Code-2" class="headerlink" title="Code"></a>Code</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAnagram</span><span class="params">(String s, String t)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span>[] letter=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="string">'z'</span>+<span class="number">1</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.length();i++)</div><div class="line">            letter[s.charAt(i)]++;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;t.length();j++)</div><div class="line">            letter[t.charAt(j)]--;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="string">'a'</span>;k&lt;=<span class="string">'z'</span>;k++)&#123;</div><div class="line">            <span class="keyword">if</span>(letter[k]!=<span class="number">0</span>)</div><div class="line">                <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Largest-Number"><a href="#Largest-Number" class="headerlink" title="Largest Number"></a>Largest Number</h3><blockquote>
+<p><a href="https://yuchen9459.github.io/2016/12/28/Largest-Number/" target="_blank" rel="external">Largest Number</a></p>
+</blockquote>
+<h3 id="Sort-List"><a href="#Sort-List" class="headerlink" title="Sort List"></a>Sort List</h3><h4 id="Question-3"><a href="#Question-3" class="headerlink" title="Question"></a>Question</h4><p>Sort a linked list in <em>O</em>(<em>n</em> log <em>n</em>) time using constant space complexity.</p>
+<h4 id="Analysis-3"><a href="#Analysis-3" class="headerlink" title="Analysis"></a>Analysis</h4><p><strong>时间复杂度</strong> O(n)         <strong>空间复杂度</strong> O(logn) </p>
+<p>调用了log(length)次Merge</p>
+<h4 id="Code-3"><a href="#Code-3" class="headerlink" title="Code"></a>Code</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">public</span> ListNode <span class="title">sortList</span><span class="params">(ListNode head)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>)</div><div class="line">      <span class="keyword">return</span> head;</div><div class="line">        </div><div class="line">    <span class="comment">// step 1. cut the list to two halves</span></div><div class="line">    ListNode prev = <span class="keyword">null</span>, slow = head, fast = head;</div><div class="line">    </div><div class="line">    <span class="keyword">while</span> (fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>) &#123;</div><div class="line">      prev = slow;</div><div class="line">      slow = slow.next;</div><div class="line">      fast = fast.next.next;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    prev.next = <span class="keyword">null</span>;</div><div class="line">    </div><div class="line">    <span class="comment">// step 2. sort each half</span></div><div class="line">    ListNode l1 = sortList(head);</div><div class="line">    ListNode l2 = sortList(slow);</div><div class="line">    </div><div class="line">    <span class="comment">// step 3. merge l1 and l2</span></div><div class="line">    <span class="keyword">return</span> merge(l1, l2);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="function">ListNode <span class="title">merge</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</div><div class="line">    ListNode l = <span class="keyword">new</span> ListNode(<span class="number">0</span>), p = l;</div><div class="line">    </div><div class="line">    <span class="keyword">while</span> (l1 != <span class="keyword">null</span> &amp;&amp; l2 != <span class="keyword">null</span>) &#123;</div><div class="line">      <span class="keyword">if</span> (l1.val &lt; l2.val) &#123;</div><div class="line">        p.next = l1;</div><div class="line">        l1 = l1.next;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        p.next = l2;</div><div class="line">        l2 = l2.next;</div><div class="line">      &#125;</div><div class="line">      p = p.next;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (l1 != <span class="keyword">null</span>)</div><div class="line">      p.next = l1;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (l2 != <span class="keyword">null</span>)</div><div class="line">      p.next = l2;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> l.next;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Insertion-Sort-List-Sort-List"><a href="#Insertion-Sort-List-Sort-List" class="headerlink" title="Insertion Sort List || Sort List"></a>Insertion Sort List || Sort List</h3><blockquote>
+<p><a href="https://yuchen9459.github.io/2016/12/26/List-Sort-Series/" target="_blank" rel="external">List Sort Series</a></p>
+</blockquote>
+<h3 id="Sort-Colors"><a href="#Sort-Colors" class="headerlink" title="Sort Colors"></a>Sort Colors</h3><h4 id="Question-4"><a href="#Question-4" class="headerlink" title="Question"></a>Question</h4><p>Given an array with <em>n</em> objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red, white and blue.</p>
+<p>Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively.</p>
+<h4 id="Analysis-4"><a href="#Analysis-4" class="headerlink" title="Analysis"></a>Analysis</h4><p>在五个月内做了三遍的题还是一直在错，基本思想是red，blue两个指针，将元素0，2分别交换到数组首和末尾。</p>
+<ul>
+<li>交换的循环条件是i小于等于blue的指针</li>
+<li>由于停止的条件是i&lt;=blue，所以应该先交换blue，后交换red</li>
+</ul>
+<h4 id="Code-4"><a href="#Code-4" class="headerlink" title="Code"></a>Code</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortColors</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> zero=<span class="number">0</span>,two=nums.length-<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=two;i++)&#123;</div><div class="line">            <span class="keyword">while</span>(nums[i]==<span class="number">2</span>&amp;&amp;i&lt;two)  swap(nums,i,two--);</div><div class="line">            <span class="keyword">while</span>(nums[i]==<span class="number">0</span>&amp;&amp;i&gt;zero)  swap(nums,i,zero++);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">        <span class="keyword">int</span> tmp=nums[a];</div><div class="line">        nums[a]=nums[b];</div><div class="line">        nums[b]=tmp;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Insert-Interval-Merge-Intervals"><a href="#Insert-Interval-Merge-Intervals" class="headerlink" title="Insert Interval||Merge Intervals"></a>Insert Interval||Merge Intervals</h3><blockquote>
+<p><a href="https://yuchen9459.github.io/2016/11/30/Insert-Interval-Merge-Intervals/" target="_blank" rel="external">Answer</a></p>
+</blockquote>
+<p>注意所给区间均为闭区间，所以在控制边界调节时（合并等）在等号成立的时候也需要执行。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/23/2017-02-23--Merge-Intervals-||-Wiggle-Sort-II/" rel="next" title=" Merge Intervals || Wiggle Sort II">
+                <i class="fa fa-chevron-left"></i>  Merge Intervals || Wiggle Sort II
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/24/2017-02-24--Java基础知识(一)/" rel="prev" title=" Java基础知识(一)">
+                 Java基础知识(一) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Coding Rabbit" />
+          <p class="site-author-name" itemprop="name">Coding Rabbit</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yuchen9459" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://facebook.com/100010761666489" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3223348645" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Intersection-of-Two-Arrays"><span class="nav-number">1.</span> <span class="nav-text">Intersection of Two Arrays</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Question"><span class="nav-number">1.1.</span> <span class="nav-text">Question</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis"><span class="nav-number">1.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code"><span class="nav-number">1.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Intersection-of-Two-Arrays-II"><span class="nav-number">2.</span> <span class="nav-text">Intersection of Two Arrays II</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Question-1"><span class="nav-number">2.1.</span> <span class="nav-text">Question</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-1"><span class="nav-number">2.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-1"><span class="nav-number">2.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H-Index"><span class="nav-number">3.</span> <span class="nav-text">H-Index</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Valid-Anagram"><span class="nav-number">4.</span> <span class="nav-text">Valid Anagram</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Question-2"><span class="nav-number">4.1.</span> <span class="nav-text">Question</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-2"><span class="nav-number">4.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-2"><span class="nav-number">4.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Largest-Number"><span class="nav-number">5.</span> <span class="nav-text">Largest Number</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sort-List"><span class="nav-number">6.</span> <span class="nav-text">Sort List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Question-3"><span class="nav-number">6.1.</span> <span class="nav-text">Question</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-3"><span class="nav-number">6.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-3"><span class="nav-number">6.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Insertion-Sort-List-Sort-List"><span class="nav-number">7.</span> <span class="nav-text">Insertion Sort List || Sort List</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sort-Colors"><span class="nav-number">8.</span> <span class="nav-text">Sort Colors</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Question-4"><span class="nav-number">8.1.</span> <span class="nav-text">Question</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Analysis-4"><span class="nav-number">8.2.</span> <span class="nav-text">Analysis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Code-4"><span class="nav-number">8.3.</span> <span class="nav-text">Code</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Insert-Interval-Merge-Intervals"><span class="nav-number">9.</span> <span class="nav-text">Insert Interval||Merge Intervals</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coding Rabbit</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

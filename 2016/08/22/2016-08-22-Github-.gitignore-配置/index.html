@@ -1,0 +1,763 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Github,Vim," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="Gitignore​    在代码管理的过程中，常常会有一部分代码是不希望被push到远端的github的，它们可能是临时文件、配置文件，或者像是Jekyll中出现的_site文件夹中的生成文件一样。而将他们都在commit之前记录在.gitignore中就可以成功地避免将它们push到远端Git上了。 .gitignore的创建​    在mac OSX下在相应的repo文件下 touch .g">
+<meta name="keywords" content="Github,Vim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Github .gitignore 配置">
+<meta property="og:url" content="http://yoursite.com/2016/08/22/2016-08-22-Github-.gitignore-配置/index.html">
+<meta property="og:site_name" content="Coding Rabbit">
+<meta property="og:description" content="Gitignore​    在代码管理的过程中，常常会有一部分代码是不希望被push到远端的github的，它们可能是临时文件、配置文件，或者像是Jekyll中出现的_site文件夹中的生成文件一样。而将他们都在commit之前记录在.gitignore中就可以成功地避免将它们push到远端Git上了。 .gitignore的创建​    在mac OSX下在相应的repo文件下 touch .g">
+<meta property="og:updated_time" content="2017-07-07T21:46:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Github .gitignore 配置">
+<meta name="twitter:description" content="Gitignore​    在代码管理的过程中，常常会有一部分代码是不希望被push到远端的github的，它们可能是临时文件、配置文件，或者像是Jekyll中出现的_site文件夹中的生成文件一样。而将他们都在commit之前记录在.gitignore中就可以成功地避免将它们push到远端Git上了。 .gitignore的创建​    在mac OSX下在相应的repo文件下 touch .g">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/08/22/2016-08-22-Github-.gitignore-配置/"/>
+
+
+
+
+
+  <title>Github .gitignore 配置 | Coding Rabbit</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coding Rabbit</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/22/2016-08-22-Github-.gitignore-配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coding Rabbit">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Rabbit">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Github .gitignore 配置</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-22T00:00:00+08:00">
+                2016-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Gitignore"><a href="#Gitignore" class="headerlink" title="Gitignore"></a>Gitignore</h2><p>​    在代码管理的过程中，常常会有一部分代码是不希望被push到远端的github的，它们可能是临时文件、配置文件，或者像是Jekyll中出现的<code>_site</code>文件夹中的生成文件一样。而将他们都在commit之前记录在<strong>.gitignore</strong>中就可以成功地避免将它们push到远端Git上了。</p>
+<h4 id="gitignore的创建"><a href="#gitignore的创建" class="headerlink" title=".gitignore的创建"></a>.gitignore的创建</h4><p>​    在mac OSX下在相应的repo文件下 <code>touch .gitignore</code> 即可创建相应文件，而通过vim .gitignore即可对其进行编辑。</p>
+<h4 id="gitignore内容规则"><a href="#gitignore内容规则" class="headerlink" title=".gitignore内容规则"></a>.gitignore内容规则</h4><blockquote>
+<p>gitignore分为两种模式，分别为开放模式与保守模式，其中开放模式是记录不希望push的内容，而保守模式是记录希望被push的文件，保守模式下的记录规则是<strong>！+ 开放模式下的语句</strong></p>
+</blockquote>
+<p><strong>忽略指定文件夹</strong></p>
+<p><code>/foldername</code></p>
+<p><strong>忽略某种类型文件</strong></p>
+<p><code>*.filetype</code></p>
+<p><strong>忽略某个文件</strong></p>
+<p><code>/filepath</code></p>
+<p>​    但是当文件已被git追踪后应该将其移除后再加入<code>.gitignore</code> </p>
+<p><code>git rm --cached ignore_file</code>  或者</p>
+<p><code>git rm -r --cached ignore_file</code></p>
+<p>​    而对于很多已经语言的生成文件已经有编辑好的文件，只需将其加入即可 <a href="https://github.com/github/gitignore" target="_blank" rel="external">Gitignore Collection</a></p>
+<h2 id="Vim-命令行编辑"><a href="#Vim-命令行编辑" class="headerlink" title="Vim 命令行编辑"></a>Vim 命令行编辑</h2><p>​    Vim通常被分为两种模式：命令行模式与插入模式，而只有在插入模式下才可以进行文字的输入。</p>
+<h4 id="文字的输入"><a href="#文字的输入" class="headerlink" title="文字的输入"></a>文字的输入</h4><p>　在「命令行模式（command mode）」下</p>
+<ol>
+<li>按一下字母<strong>「i」</strong>就可以进入「插入模式（Insert mode）」，这时候你就可以开始输入文字了。 </li>
+<li>按<strong>「a」</strong>进入插入模式后，是从目前光标所在位置的下一个位置开始输入文字。</li>
+<li>按<strong>「o」</strong>进入插入模式后，是插入新的一行，从行首开始输入文字。</li>
+</ol>
+<h4 id="文字的删除"><a href="#文字的删除" class="headerlink" title="文字的删除"></a>文字的删除</h4><p>​     您目前处于「插入模式（Insert mode）」，您就只能一直输入文字，如果您发现输错了字！想用光标键往回移动，将该字删除，就要先按一下<strong>「ESC」键转到「命令行模式（command mode）」</strong>再删除文字。</p>
+<h4 id="退出vi及保存文件"><a href="#退出vi及保存文件" class="headerlink" title="退出vi及保存文件"></a>退出vi及保存文件</h4><p>　在「命令行模式（command mode）」下，按一下「：」冒号键进入「Last line mode」，例如： </p>
+<p><strong>: w filename</strong> （输入 「w filename」将文章以指定的文件名filename保存） </p>
+<p><strong>: wq</strong> (输入「wq」，存盘并退出vi) </p>
+<p><strong>: q!</strong> (输入q!， 不存盘强制退出vi) </p>
+<h4 id="移动光标"><a href="#移动光标" class="headerlink" title="移动光标"></a>移动光标</h4><p>按<strong>「ctrl」+「b」</strong>：屏幕往“后”移动一页。 </p>
+<p>按<strong>「ctrl」+「f」</strong>：屏幕往“前”移动一页。 </p>
+<p>按<strong>「ctrl」+「u」</strong>：屏幕往“后”移动半页。 </p>
+<p>按<strong>「ctrl」+「d」</strong>：屏幕往“前”移动半页。 </p>
+<p>按<strong>「$」</strong>：移动到光标所在行的“行尾”。 </p>
+<p>按<strong>「^」</strong>：移动到光标所在行的“行首” </p>
+<h4 id="删除文字"><a href="#删除文字" class="headerlink" title="删除文字"></a>删除文字</h4><p><strong>「x」</strong>：每按一次，删除光标所在位置的“后面”一个字符。 </p>
+<p><strong>「#x」</strong>：例如，「6x」表示删除光标所在位置的“后面”6个字符。</p>
+<p><strong>「X」</strong>：大写的X，每按一次，删除光标所在位置的“前面”一个字符。 </p>
+<p><strong>「#X」</strong>：例如，「20X」表示删除光标所在位置的“前面”20个字符。 </p>
+<p><strong>「dd」</strong>：删除光标所在行。 </p>
+<p><strong>「#dd」</strong>：从光标所在行开始删除#行 </p>
+<h4 id="复制"><a href="#复制" class="headerlink" title="复制"></a>复制</h4><p><strong>「yw」</strong>：将光标所在之处到字尾的字符复制到缓冲区中。 </p>
+<p><strong>「#yw」</strong>：复制#个字到缓冲区 </p>
+<p><strong>「yy」</strong>：复制光标所在行到缓冲区。 </p>
+<p><strong>「#yy」</strong>：例如，「6yy」表示拷贝从光标所在的该行“往下数”6行文字。 </p>
+<p><strong>「p」</strong>：将缓冲区内的字符贴到光标所在位置。注意：所有与“y”有关的复制命令都必须与“p”配合才能完成复制与粘贴功能。 </p>
+<blockquote>
+<p><a href="http://linux.chinaunix.net/doc/office/2005-01-24/898.shtml" target="_blank" rel="external">http://linux.chinaunix.net/doc/office/2005-01-24/898.shtml</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Github/" rel="tag"># Github</a>
+          
+            <a href="/tags/Vim/" rel="tag"># Vim</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/20/2016-08-20-Github-Pages+Jekyll搭建博客注意事项/" rel="next" title="Github Pages+Jekyll搭建博客注意事项">
+                <i class="fa fa-chevron-left"></i> Github Pages+Jekyll搭建博客注意事项
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/08/24/2016-08-24-Excel-Sheet-Column-Number/" rel="prev" title="Excel Sheet Column Number">
+                Excel Sheet Column Number <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div id="sidebar-dimmer"></div>
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Coding Rabbit" />
+          <p class="site-author-name" itemprop="name">Coding Rabbit</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/yuchen9459" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://facebook.com/100010761666489" target="_blank" title="Facebook">
+                  
+                    <i class="fa fa-fw fa-facebook"></i>
+                  
+                  Facebook
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/3223348645" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gitignore"><span class="nav-number">1.</span> <span class="nav-text">Gitignore</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gitignore的创建"><span class="nav-number">1.0.1.</span> <span class="nav-text">.gitignore的创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gitignore内容规则"><span class="nav-number">1.0.2.</span> <span class="nav-text">.gitignore内容规则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vim-命令行编辑"><span class="nav-number">2.</span> <span class="nav-text">Vim 命令行编辑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文字的输入"><span class="nav-number">2.0.1.</span> <span class="nav-text">文字的输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文字的删除"><span class="nav-number">2.0.2.</span> <span class="nav-text">文字的删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#退出vi及保存文件"><span class="nav-number">2.0.3.</span> <span class="nav-text">退出vi及保存文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#移动光标"><span class="nav-number">2.0.4.</span> <span class="nav-text">移动光标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除文字"><span class="nav-number">2.0.5.</span> <span class="nav-text">删除文字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#复制"><span class="nav-number">2.0.6.</span> <span class="nav-text">复制</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Coding Rabbit</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
