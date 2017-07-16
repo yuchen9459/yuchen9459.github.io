@@ -83,6 +83,8 @@
 
 
 
+  <link rel="alternate" href="/atom.xml" title="Coding Rabbit" type="application/atom+xml" />
+
 
 
 
@@ -115,9 +117,9 @@
       author: '博主'
     },
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: 'IZANOTVJGC',
+      apiKey: 'ec2072f39d2b7395328835dd400d4948',
+      indexName: 'Blog_CR',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -236,9 +238,47 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -268,7 +308,7 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Rabbit">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -385,12 +425,135 @@ Code1234567891011121314151617181920212223242526272829/** * Definition for singly
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/23/2016-12-23--Reverse-Integer-||-Reverse-Bit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Coding Rabbit">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Rabbit">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2016/12/23/2016-12-23--Reverse-Integer-||-Reverse-Bit/" itemprop="url"> Reverse Integer || Reverse Bit</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-23T00:00:00+08:00">
+                2016-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Reverse IntegerQuestionReverse digits of an integer.
+Example1: x = 123, return 321
+Example2: x = -123, return -321
+Analysis越界判断：
+tmp加上tail后看是否还能变回原来的数字，不可直接利用int型的加和来判断越界（tmp*10+tail&gt;Integer.MAX_VALUE）
+Code12345678910111213141516171819public class Solution &#123;    public int reverse(int x) &#12
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/23/2016-12-23--Reverse-Integer-||-Reverse-Bit/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/23/2016-12-23--House-Robber-Series/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Rabbit">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -508,7 +671,7 @@ Code1234567891011121314151617181920212223242526272829/** * Definition for singly
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Rabbit">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -627,12 +790,12 @@ Code12
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/23/2016-12-23--Reverse-Integer-||-Reverse-Bit/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/20/2016-09-17--Course-Schedule-Series/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Rabbit">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -646,7 +809,7 @@ Code12
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2016/12/23/2016-12-23--Reverse-Integer-||-Reverse-Bit/" itemprop="url"> Reverse Integer || Reverse Bit</a></h1>
+                <a class="post-title-link" href="/2016/12/20/2016-09-17--Course-Schedule-Series/" itemprop="url"> Course Schedule Series</a></h1>
         
 
         <div class="post-meta">
@@ -658,8 +821,8 @@ Code12
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-23T00:00:00+08:00">
-                2016-12-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-20T00:00:00+08:00">
+                2016-12-20
               </time>
             
 
@@ -695,16 +858,13 @@ Code12
       
         
           
-          Reverse IntegerQuestionReverse digits of an integer.
-Example1: x = 123, return 321
-Example2: x = -123, return -321
-Analysis越界判断：
-tmp加上tail后看是否还能变回原来的数字，不可直接利用int型的加和来判断越界（tmp*10+tail&gt;Integer.MAX_VALUE）
-Code12345678910111213141516171819public class Solution &#123;    public int reverse(int x) &#12
+          Course ScheduleQuestionThere are a total of n courses you have to take, labeled from 0 to n - 1.
+Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]
+Given the total number of courses and a list of prerequisite pairs, 
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2016/12/23/2016-12-23--Reverse-Integer-||-Reverse-Bit/#more" rel="contents">
+            <a class="btn" href="/2016/12/20/2016-09-17--Course-Schedule-Series/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -755,7 +915,7 @@ Code12345678910111213141516171819public class Solution &#123;    public int reve
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Rabbit">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -871,132 +1031,12 @@ Given a non-negative
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/20/2016-09-17--Course-Schedule-Series/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Coding Rabbit">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coding Rabbit">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2016/12/20/2016-09-17--Course-Schedule-Series/" itemprop="url"> Course Schedule Series</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-20T00:00:00+08:00">
-                2016-12-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          Course ScheduleQuestionThere are a total of n courses you have to take, labeled from 0 to n - 1.
-Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]
-Given the total number of courses and a list of prerequisite pairs, 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2016/12/20/2016-09-17--Course-Schedule-Series/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/19/2016-12-19--Trapping-Rain-Water-II-||-First-Missing-Positive/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Rabbit">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1115,7 +1155,7 @@ Note:Both m and n are less than 110. The height of each unit cell is greater tha
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Rabbit">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1237,7 +1277,7 @@ LeetC
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Rabbit">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1357,7 +1397,7 @@ Examples:
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Coding Rabbit">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/images/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1509,7 +1549,7 @@ Code1234
       <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/avatar.jpg"
                alt="Coding Rabbit" />
           <p class="site-author-name" itemprop="name">Coding Rabbit</p>
            
@@ -1543,6 +1583,13 @@ Code1234
         </nav>
 
         
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
 
         <div class="links-of-author motion-element">
           
@@ -1566,11 +1613,11 @@ Code1234
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://weibo.com/3223348645" target="_blank" title="微博">
+                <a href="http://weibo.com/3223348645" target="_blank" title="weibo">
                   
                     <i class="fa fa-fw fa-weibo"></i>
                   
-                  微博
+                  weibo
                 </a>
               </span>
             
@@ -1581,6 +1628,24 @@ Code1234
         
 
         
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.codeboy.me/" title="Codeboy" target="_blank">Codeboy</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://yijiajin.github.io/" title="Yijia_Jin" target="_blank">Yijia_Jin</a>
+                </li>
+              
+            </ul>
+          </div>
         
 
         
@@ -1743,6 +1808,19 @@ Code1234
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.1"></script>
 
 
 
